@@ -16,10 +16,10 @@
          <br/>
          Richesta numero: <b><xsl:value-of select="idrichiesta" /></b>.<br/>
          Descrizione del problema: <xsl:value-of select="descrizione" />
-         <!--
+         
          <br/>  
          Per ulteriori informazioni <a href="http://martino.cofasir.it">http://martino.cofasir.it</a>
-         <br/>-->
+         <br/>
          Distinti Saluti.
 		</FONT></DIV></BODY></HTML>
     </xsl:template>

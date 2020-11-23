@@ -15,10 +15,10 @@
          la informiamo che è stata inviata una richiesta di intervento per l'Edificio: <xsl:value-of select="codedi" /><br/>
          Richesta numero: <b><xsl:value-of select="idrichiesta" /></b>.<br/>
          Descrizione del problema: <xsl:value-of select="descrizione" />
-         <!--
+         
          <br/>
-         Per ulteriori informazioni <a href="http://www.cft-sir.it/me/Default.aspx">http://www.cft-sir.it/me/Default.aspx</a>
-         <br/>-->
+         Per ulteriori informazioni <a href="http://martino.cofasir.it">http://martino.cofasir.it</a>
+         <br/>
          Distinti Saluti.
 		</FONT></DIV></BODY></HTML>
     </xsl:template>
