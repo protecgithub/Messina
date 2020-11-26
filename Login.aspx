@@ -34,8 +34,7 @@
 								cellspacing="1" cellpadding="2" align="center" bgcolor="#9bbec2" border="0">
 								<TR>
 									<TD style="HEIGHT: 35px" valign="middle" colspan="2" class="TitleSearch" align="center">
-										<B>
-											<%= TheSite.Classi.Helper.GetApplicationName()%>
+										<B>	Engie Servizi s.p.a. SIR Martino
 										</B>
 									</TD>
 								</TR>
@@ -63,7 +62,7 @@
 									<TD style="HEIGHT: 43px" colspan="2" align="center"><ASP:BUTTON id="BttConferma" runat="server" text="Conferma" cssclass="btn"></ASP:BUTTON></TD>
 								</TR>
 								<TR>									
-									<TD colspan="2">Inserisci la username e la password relativa al sistema informativo per la gestione dei servizi di: <b><%= TheSite.Classi.Helper.GetApplicationName()%></b></TD>
+									<TD colspan="2">Inserisci la username e la password relativa al sistema informativo per la gestione dei servizi di: <b>SIR Martino</b></TD>
 								</TR>
 								<TR>
 									<TD colspan="2" align="center">

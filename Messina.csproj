@@ -3602,6 +3602,7 @@
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\vbc.rsp" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\VBCSCompiler.exe.config" />
     <Content Include="ReportXls\MasterQuartoTrimestre_r3.xls" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="SchemiXSD\DsAnalisiStatistiche.xsd" />
     <Content Include="SchemiXSD\DsAnalisiStatistiche.xsx">
       <DependentUpon>DsAnalisiStatistiche.xsd</DependentUpon>
@@ -4422,7 +4423,6 @@
     <Folder Include="Log\" />
     <Folder Include="MasterExcel\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Properties\" />
     <Folder Include="StampaRapportiPDF\Stampe\" />
   </ItemGroup>
   <PropertyGroup>
