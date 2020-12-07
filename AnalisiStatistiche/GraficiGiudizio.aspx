@@ -96,7 +96,7 @@
 														<TABLE id="tblSubmit" style="WIDTH: 480px; HEIGHT: 26px" cellSpacing="1" cellPadding="1"
 															width="480" align="center" border="0">
 															<TR>
-																<TD noWrap align="left">
+																<TD noWrap align="left" style="display:none">
 																	<CC1:S_BUTTON id="S_BtnSubmit" tabIndex="9" runat="server" cssclass="btn" width="150px" text="Genera il Report in Html"></CC1:S_BUTTON></TD>
 																<TD>
 																	<ASP:BUTTON id="btnReportPdf" runat="server" cssclass="btn" width="150px" text="Genera il Report in Pdf"></ASP:BUTTON></TD>

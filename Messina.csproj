@@ -86,10 +86,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\KPIVod.dll</HintPath>
     </Reference>
-    <Reference Include="LibConsCont, Version=1.0.2999.22219, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\LibConsCont.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.UI.WebControls, Version=1.0.2.226, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
@@ -401,8 +397,6 @@
     <Content Include="bin\ICSharpCode.SharpZipLib.dll" />
     <Content Include="bin\KPIH3G.dll" />
     <Content Include="bin\KPIVod.dll" />
-    <Content Include="bin\LibConsCont.dll" />
-    <Content Include="bin\LibConsCont.pdb" />
     <Content Include="bin\Me.dll" />
     <Content Include="bin\Me.pdb" />
     <Content Include="bin\Me.xml" />
@@ -685,6 +679,7 @@
     <Content Include="emailcreazione.xslt" />
     <Content Include="EQImages\_vti_cnf\ImmagineNonDisponibile.jpg" />
     <Content Include="ErrorPage.aspx" />
+    <Content Include="favicon.ico" />
     <Content Include="GestioneSpazi\RicercaSpazi.aspx" />
     <Content Include="Gestione\Addetti.aspx" />
     <Content Include="Gestione\Buildings.aspx" />
@@ -1233,7 +1228,6 @@
     <Content Include="ManutenzioneCorrettiva\RapportoRichiestaRdl.aspx" />
     <Content Include="ManutenzioneCorrettiva\RapportoTecnicoIntervento.aspx" />
     <Content Include="ManutenzioneCorrettiva\RapportoTecnicoInterventoPdf.aspx" />
-    <Content Include="ManutenzioneCorrettiva\rendicontazione.aspx" />
     <Content Include="ManutenzioneCorrettiva\Report.aspx" />
     <Content Include="ManutenzioneCorrettiva\ReportDettaglio.aspx" />
     <Content Include="ManutenzioneCorrettiva\ReportDettaglioFondo.aspx" />
@@ -2579,10 +2573,6 @@
     </Compile>
     <Compile Include="ManutenzioneCorrettiva\RapportoTecnicoInterventoPdf.aspx.cs">
       <DependentUpon>RapportoTecnicoInterventoPdf.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManutenzioneCorrettiva\rendicontazione.aspx.cs">
-      <DependentUpon>rendicontazione.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ManutenzioneCorrettiva\Report.aspx.cs">

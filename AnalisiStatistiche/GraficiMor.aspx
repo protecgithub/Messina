@@ -134,7 +134,7 @@
 																		<TABLE style="HEIGHT: 26px" id="tblSubmit" border="0" cellSpacing="1" cellPadding="1" width="28%"
 																			align="center">
 																			<TR>
-																				<TD noWrap align="left">
+																				<TD noWrap align="left" style="display:none">
 																					<CC1:S_BUTTON id="S_BtnSubmit" tabIndex="9" runat="server" cssclass="btn" text="Genera il Report in Html"
 																						width="150px"></CC1:S_BUTTON></TD>
 																				<TD>
