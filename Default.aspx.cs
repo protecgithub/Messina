@@ -42,8 +42,8 @@ namespace TheSite
 			
 			}
 			// Inserire qui il codice utente necessario per inizializzare la pagina.
-			if (AslMobile.Class.ClassGlobal.IsMobileDevice  == true ) 
-				Response.Redirect("AslMobile/Default.aspx"); 
+			//if (AslMobile.Class.ClassGlobal.IsMobileDevice  == true ) 
+			//	Response.Redirect("AslMobile/Default.aspx"); 
 		}
 
 		#region Codice generato da Progettazione Web Form

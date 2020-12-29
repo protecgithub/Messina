@@ -62,7 +62,8 @@
 									<TD style="HEIGHT: 43px" colspan="2" align="center"><ASP:BUTTON id="BttConferma" runat="server" text="Conferma" cssclass="btn"></ASP:BUTTON></TD>
 								</TR>
 								<TR>									
-									<TD colspan="2">Inserisci la username e la password relativa al sistema informativo per la gestione dei servizi di: <b>SIR Martino</b></TD>
+									<TD colspan="2" align="center">Inserisci la username e la password relativa al sistema informativo: 
+										<br /><b>SIR Martino</b></TD>
 								</TR>
 								<TR>
 									<TD colspan="2" align="center">

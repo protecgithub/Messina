@@ -401,7 +401,6 @@
     <Content Include="bin\Me.pdb" />
     <Content Include="bin\Me.xml" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="bin\Microsoft.Web.UI.WebControls.dll" />
     <Content Include="bin\MP_RPT_XLS.dll" />
     <Content Include="bin\PMPExcel.dll" />
@@ -1341,6 +1340,7 @@
     <Content Include="ReportGestioneSpazi\ReportGestioneSpazi.aspx" />
     <Content Include="ReportXls\PaginaProvaClasse.aspx" />
     <Content Include="RichiesteDati\Autentica.aspx" />
+    <Content Include="RichiesteDati\LoginCallCenter.aspx" />
     <Content Include="RichiesteDati\prova.aspx" />
     <Content Include="SgaRtf\SGA.aspx" />
     <Content Include="SgaRtf\XML\XMLsgaRpt01.xml" />
@@ -3045,6 +3045,13 @@
       <DependentUpon>Autentica.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="RichiesteDati\LoginCallCenter.aspx.cs">
+      <DependentUpon>LoginCallCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RichiesteDati\LoginCallCenter.aspx.designer.cs">
+      <DependentUpon>LoginCallCenter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RichiesteDati\prova.aspx.cs">
       <DependentUpon>prova.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3554,8 +3561,6 @@
     <Content Include="Images\immagini\Thumbs.db" />
     <Content Include="Images\Thumbs.db" />
     <Content Include="Images\treeimages\Thumbs.db" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\WebApplication1.csprojAssemblyReference.cache" />
     <None Include="packages.config" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\.signature.p7s" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.Extensions.props" />
@@ -4412,7 +4417,6 @@
     <Folder Include="FileWebStat\" />
     <Folder Include="Log\" />
     <Folder Include="MasterExcel\" />
-    <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="StampaRapportiPDF\Stampe\" />
   </ItemGroup>
   <PropertyGroup>
