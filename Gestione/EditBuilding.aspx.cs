@@ -148,7 +148,7 @@ namespace TheSite.Gestione
 
 
 				BindProvince();							
-				ImpostaProvinciaDefault("CT","CATANIA");//Carica Anche i Comuni				
+				//ImpostaProvinciaDefault("CT","CATANIA");//Carica Anche i Comuni				
 				BindUsi();
 				BindDitte();
 				BindLocalizzazione();

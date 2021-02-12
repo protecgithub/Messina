@@ -3664,6 +3664,9 @@
     <Content Include="webcad\images\treeimages\treeimages\casa.psd" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Login.aspx.resx">
+      <DependentUpon>Login.aspx.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\Report_Long.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Report_Long.cs</LastGenOutput>

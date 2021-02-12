@@ -11,8 +11,8 @@ namespace TheSite
     public partial class LoginCallCenter : System.Web.UI.Page
     {
 
-		protected S_Controls.S_TextBox txtsUserName;
-		protected S_Controls.S_TextBox txtsPasword;
+		public S_Controls.S_TextBox txtsUserName;
+		public S_Controls.S_TextBox txtsPasword;
 		protected Csy.WebControls.MessagePanel PanelMess;
 
 		string user;
@@ -33,13 +33,13 @@ namespace TheSite
 		{
 			Classi.Sicurezza _Sic = new Classi.Sicurezza();
 			Classi.Utente _Utente = new TheSite.Classi.Utente();
-
-			txtsPasword.Text = _Sic.EncryptMD5(txtsPasword.Text);
+			//pwdLabel.Text = "pass: " + password;
+			txtsPasword.Text = _Sic.EncryptMD5(password);
 			txtsUserName.Text = user;
 			try
 			{
 
-				int i_IdUtente = _Utente.Login(this);
+				int i_IdUtente = _Utente.LoginCallcenter(this);
 
 				if (i_IdUtente > 0)
 				{

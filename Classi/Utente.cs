@@ -10,9 +10,17 @@ using S_Controls.Collections;
 using ApplicationDataLayer;
 using ApplicationDataLayer.DBType;
 using System.Web.Security;
+using System.Data.OracleClient;
 
 namespace TheSite.Classi
 {
+	public class DatiUtente
+	{
+		public string Nome { get; set; }
+		public string Cognome { get; set; }
+		public string Email { get; set; }
+
+	}
 	/// <summary>
 	/// Descrizione di riepilogo per Utente.
 	/// </summary>
@@ -68,6 +76,111 @@ namespace TheSite.Classi
 
 			return _MyDs;
 		}
+		[Obsolete]
+		public int CheckDatiUtentecount(string userId)
+		{
+
+
+			OracleConnection con = new System.Data.OracleClient.OracleConnection(s_ConnStr);
+			con.Open();
+
+			string Sql = "select count(*) as conto from utenti u where u.isactive = 1 and u.categoria = 0 and(u.nome is null or u.cognome is null or u.email is null) and UPPER(U.USERNAME) = UPPER(" + "'" + userId + "')";
+
+			OracleCommand cmd = new OracleCommand(Sql, con);
+
+			OracleDataReader reader = cmd.ExecuteReader();
+			string result = "0";
+			while (reader.Read())
+			{
+				result = reader.GetInt32(0).ToString();
+			}
+
+			// Clean up
+			reader.Dispose();
+			cmd.Dispose();
+			con.Dispose();
+			return int.Parse(result);
+		}
+
+		[Obsolete]
+		public DatiUtente CheckDatiUtente(string userId)
+		{
+
+
+			OracleConnection con = new System.Data.OracleClient.OracleConnection(s_ConnStr);
+			con.Open();
+
+			string Sql = "select nvl(u.nome,' ') as nome, nvl(u.cognome, ' ') as cognome, nvl(u.email, ' ') as email from utenti u where u.isactive = 1 and u.categoria = 0 and(u.nome is null or u.cognome is null or u.email is null) and UPPER(U.USERNAME) = UPPER(" + "'" + userId + "')";
+
+			OracleCommand cmd = new OracleCommand(Sql, con);
+
+			OracleDataReader MyReader = cmd.ExecuteReader();
+			string nome = "";
+			string cognome = "";
+			string email = "";
+
+			while (MyReader.Read())
+			{
+				// result =reader.GetInt32(0).ToString();
+
+				nome = MyReader.GetString(0);
+				cognome = MyReader.GetString(1);
+				email = MyReader.GetString(2);
+
+			}
+
+			// Clean up
+			MyReader.Dispose();
+			cmd.Dispose();
+			con.Dispose();
+
+
+
+			//            string nome = _MyDs.Tables[0].Rows[0]["nome"].ToString();
+			//string cognome = _MyDs.Tables[0].Rows[0]["cognome"].ToString();
+			//string email = _MyDs.Tables[0].Rows[0]["email"].ToString();
+			//bool revisione = _MyDs.Tables[0].Rows[0]["revisione"].ToString() == "INSERIRE_SI";
+			return new DatiUtente()
+			{
+				Nome = nome,
+				Cognome = cognome,
+				Email = email
+
+			};
+
+
+		}
+
+		[Obsolete]
+		public void SaveUserData(string userName, string nome, string cognome, string email)
+		{
+			OracleConnection con = new System.Data.OracleClient.OracleConnection(s_ConnStr);
+			con.Open();
+
+			OracleCommand cmd = new OracleCommand(
+			  "select username from utenti where username='" + userName + "'", con);
+
+			object sal = cmd.ExecuteScalar();
+			//Console.WriteLine("Employee sal before update: " + sal);
+
+			cmd.CommandText = "update utenti set nome = '" + nome +
+				"', cognome = '" + cognome + "' , email='" + email + "'"
+				+ " where username='" + userName + "'";
+
+			// Auto-commit changes
+			int rowsUpdated = cmd.ExecuteNonQuery();
+
+			if (rowsUpdated > 0)
+			{
+				cmd.CommandText = "select username from utenti where username='" + userName + "'";
+				sal = cmd.ExecuteScalar();
+				//Console.WriteLine("Employee sal after update: " + sal);
+			}
+
+			// Clean up
+			cmd.Dispose();
+			con.Dispose();
+		}
 
 		/// <summary>
 		/// Ritorna l'esito della procedura di autenticazione passando la pagina
@@ -76,27 +189,78 @@ namespace TheSite.Classi
 		public int Login(Page LoginPage)
 		{
 			S_ControlsCollection _SColl = new S_ControlsCollection();
-			_SColl.AddItems(LoginPage.Controls);
+			var un = ((Login)LoginPage).txtsUserName;
+			S_Controls.Collections.S_Object unc = new S_Controls.Collections.S_Object();
+			unc.ParameterName = un.DBParameterName;
+			unc.DbType = un.DBDataType;
+			unc.Direction = un.DBDirection;
+			unc.Index = un.DBIndex;
+			unc.Value = un.Text;
+			unc.Size = un.DBSize;
 
-            return Login(_SColl);
+			un = ((Login)LoginPage).txtsPasword;
+			S_Controls.Collections.S_Object unp = new S_Controls.Collections.S_Object();
+			unp.ParameterName = un.DBParameterName;
+			unp.DbType = un.DBDataType;
+			unp.Direction = un.DBDirection;
+			unp.Index = un.DBIndex;
+			unp.Value = un.Text;
+			unp.Size = un.DBSize;
 
-//			S_Controls.Collections.S_Object s_Cursor = new S_Object();
-//			s_Cursor.ParameterName = "IO_CURSOR";
-//			s_Cursor.DbType = CustomDBType.Cursor;
-//			s_Cursor.Direction = ParameterDirection.Output;
-//			s_Cursor.Index = 2;
-//			_SColl.Add(s_Cursor);
-//
-//			_SColl.SortByDBIndex();
-//			
-//			ApplicationDataLayer.OracleDataLayer _OraDl = new OracleDataLayer(s_ConnStr);
-//
-//			DataSet _MyDs = _OraDl.GetRows(_SColl, "PACK_UTENTI.SP_AUTENTICA_UTENTI").Copy();
-//
-//			if (_MyDs.Tables[0].Rows.Count > 0)
-//				return Convert.ToInt32(_MyDs.Tables[0].Rows[0]["UTENTE_ID"].ToString());
-//			else
-//				return 0;
+			_SColl.Add(unc);
+			_SColl.Add(unp);
+
+			return Login(_SColl);
+
+			//			S_Controls.Collections.S_Object s_Cursor = new S_Object();
+			//			s_Cursor.ParameterName = "IO_CURSOR";
+			//			s_Cursor.DbType = CustomDBType.Cursor;
+			//			s_Cursor.Direction = ParameterDirection.Output;
+			//			s_Cursor.Index = 2;
+			//			_SColl.Add(s_Cursor);
+			//
+			//			_SColl.SortByDBIndex();
+			//			
+			//			ApplicationDataLayer.OracleDataLayer _OraDl = new OracleDataLayer(s_ConnStr);
+			//
+			//			DataSet _MyDs = _OraDl.GetRows(_SColl, "PACK_UTENTI.SP_AUTENTICA_UTENTI").Copy();
+			//
+			//			if (_MyDs.Tables[0].Rows.Count > 0)
+			//				return Convert.ToInt32(_MyDs.Tables[0].Rows[0]["UTENTE_ID"].ToString());
+			//			else
+			//				return 0;
+		}
+
+		/// <summary>
+		/// Ritorna l'esito della procedura di autenticazione passando la pagina
+		/// </summary>
+		/// <returns></returns>
+		public int LoginCallcenter(Page LoginPage)
+		{
+			S_ControlsCollection _SColl = new S_ControlsCollection();
+			var un = ((LoginCallCenter)LoginPage).txtsUserName;
+			S_Controls.Collections.S_Object unc = new S_Controls.Collections.S_Object();
+			unc.ParameterName = un.DBParameterName;
+			unc.DbType = un.DBDataType;
+			unc.Direction = un.DBDirection;
+			unc.Index = un.DBIndex;
+			unc.Value = un.Text;
+			unc.Size = un.DBSize;
+
+			un = ((LoginCallCenter)LoginPage).txtsPasword;
+			S_Controls.Collections.S_Object unp = new S_Controls.Collections.S_Object();
+			unp.ParameterName = un.DBParameterName;
+			unp.DbType = un.DBDataType;
+			unp.Direction = un.DBDirection;
+			unp.Index = un.DBIndex;
+			unp.Value = un.Text;
+			unp.Size = un.DBSize;
+
+			_SColl.Add(unc);
+			_SColl.Add(unp);
+
+			return Login(_SColl);
+
 		}
 		/// <summary>
 		/// Ritorna l'esito della procedura di autenticazione passando i Parametri
@@ -112,7 +276,7 @@ namespace TheSite.Classi
 			_SColl.Add(s_Cursor);
 
 			_SColl.SortByDBIndex();
-			
+
 			ApplicationDataLayer.OracleDataLayer _OraDl = new OracleDataLayer(s_ConnStr);
 
 			DataSet _MyDs = _OraDl.GetRows(_SColl, "PACK_UTENTI.SP_AUTENTICA_UTENTI").Copy();
@@ -122,6 +286,7 @@ namespace TheSite.Classi
 			else
 				return 0;
 		}
+
 		/// <summary>
 		/// Cambio della Password
 		/// </summary>
